@@ -47,7 +47,7 @@ trait SliderViewTrait{
 
 			$html .= "<h2>".$posts[$i]->post_title."</h2>";
 
-			$html .= "<p>".$posts[$i]->post_content." ... <a href='".get_post_permalink($posts[$i]->ID)."'>Read more</a></p></div>";
+			$html .= "<a href='".get_post_permalink($posts[$i]->ID)."'>Read more</a></div>";
 		}
 
 		$html .= '</div>'; //swiper-wrapper
@@ -55,8 +55,8 @@ trait SliderViewTrait{
 		$html .= '<div class="swiper-button-prev"></div>'; 
 		$html .= '</div>'; //swiper-container
 		
-		echo $html;
-		// return $html;
+
+		 return $html;
 	}
 
 	public function getPosts($args){
