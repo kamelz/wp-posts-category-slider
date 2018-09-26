@@ -47,7 +47,7 @@ trait SliderViewTrait{
 
 			$html .= "<h2>".$posts[$i]->post_title."</h2>";
 
-			$html .= "<a href='".get_post_permalink($posts[$i]->ID)."'>Read more</a></div>";
+			$html .= "<a href='".get_post_permalink($posts[$i]->ID)."'>المزيد</a></div>";
 		}
 
 		$html .= '</div>'; //swiper-wrapper
