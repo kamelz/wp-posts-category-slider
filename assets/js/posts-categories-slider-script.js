@@ -1,5 +1,6 @@
+var $j = (typeof $ !== 'undefined')? $:jQuery; 
 
-$(document).ready(function(){
+$j(document).ready(function(){
 
  var swiper = new Swiper('.swiper-container', {
       navigation: {
