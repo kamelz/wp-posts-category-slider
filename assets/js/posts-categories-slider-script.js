@@ -1,3 +1,4 @@
+alert(1);
 var $j = (typeof $ !== 'undefined')? $:jQuery; 
 
 $j(document).ready(function(){
