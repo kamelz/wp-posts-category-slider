@@ -1,20 +1,22 @@
-<?php namespace App\Includes\Traits;
+<?php namespace App\Includes;
+
+use App\Includes\Traits\SliderViewTrait;
 
 class ShortcodeHandler{
 	
 	use SliderViewTrait;
 
 	public function addPostsSlider($args){
-		if(isset($args['category_id'])){
 			
-			$type = $args['type']??'basic';
-			$limit = $args['limit']?? 0; // 0 => all
+		$type = $args['type']??'basic';
+		$category = $args['category_id']??[];
+		$limit = $args['limit']?? 3;
 
-			return $this->sliderType($type)
-				 ->withCategory($args['category_id'])
-				 ->limited($limit)
-				 ->render();
-		}
+		return $this->sliderType($type)
+			 ->withCategory($category)
+			 ->limited($limit)
+			 ->render();
+
 	}
 
 }

@@ -1,10 +1,9 @@
-<?php
+<?php namespace App\Includes\Traits;
 
 trait SliderViewTrait{
 	
 	public $type;
-	public $category;
-	public $limit;
+	public $args;
 
 	public function sliderType($type){
 		$this->type = $type;
@@ -13,31 +12,21 @@ trait SliderViewTrait{
 	}
 
 	public function withCategory($category){
-		$this->category = $category;
+		$this->args['category'] = $category;
 		//todo validate 
 		return $this;
 	}
 
 	public function limited($limit){
-		$this->limit = $limit;
+		$this->args['posts_per_page'] = $limit;
 		//todo validate 
 		return $this;
 	}
 
 	public function render(){
-		$args  = [];
-		// $args[] = null !==  $this->category?['category' => $this->category]:[]; 
-		// $args[] = null !==  $this->limit?['posts_per_page' => $this->limit]:[]; 
-		if(null !==  $this->category){
-			$args['category'] =  $this->category;
-		}
 
-		if(null !==  $this->category){
-			$args['posts_per_page'] =  $this->limit;
-
-		}
-
-		$posts = $this->getPosts($args);
+		$posts = $this->getPosts();
+		
 		$html = '<div class="swiper-container">';
 		$html .= '<div class="swiper-wrapper">';
 
@@ -47,7 +36,7 @@ trait SliderViewTrait{
 
 			$html .= "<h2>".$posts[$i]->post_title."</h2>";
 
-			$html .= "<a href='".get_post_permalink($posts[$i]->ID)."'>المزيد</a></div>";
+			$html .= "<a href='".get_post_permalink($posts[$i]->ID)."'>".lang('more')."</a></div>";
 		}
 
 		$html .= '</div>'; //swiper-wrapper
@@ -55,14 +44,12 @@ trait SliderViewTrait{
 		$html .= '<div class="swiper-button-prev"></div>'; 
 		$html .= '</div>'; //swiper-container
 		
-
-		 return $html;
+		return $html;
 	}
 
-	public function getPosts($args){
-		//with category args
+	public function getPosts(){
 
-		return get_posts($args);
+		return get_posts($this->args);
 	}
 }
 
