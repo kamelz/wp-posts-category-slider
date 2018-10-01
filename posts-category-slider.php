@@ -1,7 +1,6 @@
 <?php namespace App;
 
 require_once 'vendor/autoload.php';
-require_once 'helper.php';
 
 
 /**
@@ -53,5 +52,4 @@ class PostsCategorySliderMain{
 		return defined( 'ABSPATH' );
 	}	
 }
-session_start();
 (new PostsCategorySliderMain());

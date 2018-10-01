@@ -8,7 +8,7 @@ class Bootstrap{
 
 	public function __construct() {
 
-		(new Language)->setLanguage('en');
+		(new Language)->setLanguage('ar');
     }
     
     public function registerAssets(){
