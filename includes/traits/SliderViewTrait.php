@@ -1,31 +1,24 @@
 <?php namespace App\Includes\Traits;
 
 trait SliderViewTrait{
-	
-	public $type;
+
 	public $args;
 
-	public function sliderType($type){
-		$this->type = $type;
-		//todo validate 
-		return $this;
-	}
-
 	public function withCategory($category){
-		$this->args['category'] = $category;
-		//todo validate 
+		$key = is_numeric($category)?'category':'category_name';
+		$this->args[$key] = $category;
 		return $this;
 	}
 
 	public function limited($limit){
 		$this->args['posts_per_page'] = $limit;
-		//todo validate 
+
 		return $this;
 	}
 
 	public function render(){
 
-		$posts = $this->getPosts();
+		$posts = get_posts($this->args);
 		
 		$html = '<div class="swiper-container">';
 		$html .= '<div class="swiper-wrapper">';
@@ -45,11 +38,6 @@ trait SliderViewTrait{
 		$html .= '</div>'; //swiper-container
 		
 		return $html;
-	}
-
-	public function getPosts(){
-
-		return get_posts($this->args);
 	}
 }
 

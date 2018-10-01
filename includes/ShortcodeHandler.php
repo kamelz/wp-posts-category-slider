@@ -8,12 +8,10 @@ class ShortcodeHandler{
 
 	public function addPostsSlider($args){
 			
-		$type = $args['type']??'basic';
-		$category = $args['category_id']??[];
+		$category = $args['category']??[];
 		$limit = $args['limit']?? 3;
 
-		return $this->sliderType($type)
-			 ->withCategory($category)
+		return $this->withCategory($category)
 			 ->limited($limit)
 			 ->render();
 
