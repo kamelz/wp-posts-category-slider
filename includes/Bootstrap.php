@@ -1,13 +1,14 @@
 <?php namespace App\Includes;
 
-use App\Includes\ShortcodeHandler;
 use App\Includes\Files;
+use App\Includes\Language;
+use App\Includes\ShortcodeHandler;
 
 class Bootstrap{
 
 	public function __construct() {
 
-		$this->setLanguage('ar');
+		(new Language)->setLanguage('en');
     }
     
     public function registerAssets(){
@@ -19,10 +20,5 @@ class Bootstrap{
 	public function registerShortcodes(){
 
 		add_shortcode( 'pcs', [new ShortcodeHandler,'addPostsSlider'] );
-	}
-
-	public function setLanguage($lang){
-
-		$_SESSION['lang'] = (new Files)->loadLangFile($lang);	
 	}
 }
