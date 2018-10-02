@@ -1,5 +1,5 @@
 <?php namespace App\Includes\Traits;
-
+use App\Includes\Language;
 trait SliderViewTrait{
 
 	public $args;
@@ -29,7 +29,7 @@ trait SliderViewTrait{
 
 			$html .= "<h2>".$posts[$i]->post_title."</h2>";
 
-			$html .= "<a href='".get_post_permalink($posts[$i]->ID)."'>".lang('more')."</a></div>";
+			$html .= "<a href='".get_post_permalink($posts[$i]->ID)."'>".Language::lang('more')."</a></div>";
 		}
 
 		$html .= '</div>'; //swiper-wrapper

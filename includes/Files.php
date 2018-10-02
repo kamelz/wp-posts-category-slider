@@ -11,9 +11,8 @@ class Files{
     }
 
     public function injectScript(){
-		$file = new Files();
-		$file->loadAsset('js');
-		$file->loadAsset('css');
+		$this->loadAsset('js');
+		$this->loadAsset('css');
 	}
 
 	public function loadjQuery(){
@@ -34,7 +33,7 @@ class Files{
 	}
 	
 	public function loadLangFile($lang){
-
+		
 		return include LANGS_PATH.'/'.$lang.'.php';
 	}
 

@@ -5,16 +5,17 @@ use App\Includes\Files;
 class Language{
 
 	public function __construct() {
-		session_start();
-    }
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
+	}
     
     public function setLanguage($lang){
-
-		$_SESSION['lang'] = (new Files)->loadLangFile($lang);	
+		$_SESSION[plugin_basename(__FILE__ ).'_lang'] = (new Files)->loadLangFile($lang);	
     }
     
-    public static function lang($lang){
+    public static function lang($key){
 
-    	return $_SESSION['lang']["$key"];
+    	return $_SESSION[plugin_basename(__FILE__ ).'_lang']["$key"];
     }
 }
